@@ -1,0 +1,23 @@
+// // L เช่าของหอ landlord
+// func GenerateIDUser_forlandlord() string {
+// 	// สร้างตัวอักษรแรก (2 ตัว)
+// 	firstTwoLetters := "L" // 2 ส่ง len
+// 	// สร้างตัวเลข (4 ตัว)
+// 	numbers := randomNumbers()
+// 	return firstTwoLetters + numbers
+// }
+
+// // สร้างตัวเลขแบบสุ่ม
+// func randomNumbers() string {
+// 	return fmt.Sprintf("%04d", rand.Intn(9998)+1)
+// }
+
+// func RandomString_forlandlord(length int) string {
+// 	const charset = "L"
+// 	seededRand := rand.New(rand.NewSource(time.Now().UnixNano())) //สร้างตัวแปรสุ่ม
+// 	var result strings.Builder                                    // typr strings.Builder ใช้เก็บข้อความ (string) เช่น a,v,d เพื่อประหยัดตัวแปร
+// 	for i := 0; i < length; i++ {
+// 		result.WriteByte(charset[seededRand.Intn(len(charset))]) // WriteByte เลือกจาก seededRand.Intn(len(charset) เลือกสุ่ม  charset
+// 	}
+// 	return result.String()
+// }

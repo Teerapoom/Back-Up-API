@@ -38,6 +38,7 @@ func loadDatabase() {
 	database.Db.AutoMigrate(&model.User{})
 	database.Db.AutoMigrate(&model.StatusRoom{})
 	database.Db.AutoMigrate(&model.Room{})
+	database.Db.AutoMigrate(&model.Checkin{})
 	seedData()
 }
 

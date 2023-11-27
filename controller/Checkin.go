@@ -10,6 +10,7 @@ import (
 
 func CreateCheckin(c *gin.Context) {
 	var input model.Checkin
+
 	var user_id = util.CurrentUser(c).ID
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -22,7 +23,7 @@ func CreateCheckin(c *gin.Context) {
 
 	checkin := model.Checkin{
 		UserID:            user_id,
-		UserNameCheckin:   input.UserNameCheckin,
+		UserNameCheckin:   input.UserNameCheckin, //ชื่อห้อง
 		UserNameCheckinID: input.UserNameCheckinID,
 		RoomID:            input.RoomID,
 		Deposit:           input.Deposit,
@@ -47,6 +48,7 @@ func CreateCheckin(c *gin.Context) {
 		Addr2:             input.Addr2,
 		Place2:            input.Place2,
 	}
+
 	savedcheckin, err := checkin.Save()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

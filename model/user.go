@@ -95,3 +95,10 @@ func UpdateUser(User *User) (err error) {
 	}
 	return nil
 }
+
+func Remove(User *User) error {
+	if err := database.Db.Delete(&User).Error; err != nil {
+		return err
+	}
+	return nil
+}

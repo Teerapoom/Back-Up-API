@@ -172,3 +172,26 @@ func UpdateUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, User)
 }
+
+func RemoveUser(c *gin.Context) {
+	var User model.User
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	err := model.GetUser(&User, id)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.AbortWithStatus(http.StatusNotFound)
+			return
+		}
+
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+
+	err = model.Remove(&User)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+	c.AbortWithStatusJSON(http.StatusOK, gin.H{"message": "Successfully Remove"})
+}

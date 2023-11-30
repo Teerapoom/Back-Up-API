@@ -77,7 +77,7 @@ func serveApplication() {
 	//ทุกคนสามารถใช้งานได้
 	authRoutes := router.Group("/auth/user")
 	{
-		// login route
+		// USER route
 		authRoutes.POST("/login", controller.Login)
 	}
 
@@ -88,6 +88,7 @@ func serveApplication() {
 		adminRoutes.GET("/users", controller.GetUsers)
 		adminRoutes.GET("/user/:id", controller.GetUser)
 		adminRoutes.PUT("/user/:id", controller.UpdateUser)
+		adminRoutes.DELETE("/user/remove/:id", controller.RemoveUser)
 		adminRoutes.POST("/user/role", controller.CreateRole)
 		adminRoutes.GET("/user/role", controller.GetRoles)
 		adminRoutes.GET("/user/role/:id", controller.GetRole)

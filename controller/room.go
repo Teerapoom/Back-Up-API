@@ -1,12 +1,15 @@
 package controller
 
 import (
+	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/teerapoom/API_Dormitory_v.2/database"
 	"github.com/teerapoom/API_Dormitory_v.2/model"
 	"github.com/teerapoom/API_Dormitory_v.2/util"
+	"gorm.io/gorm"
 )
 
 // add Room
@@ -24,6 +27,12 @@ func CreateRoom(c *gin.Context) {
 		StatusID = 2
 	} else if input.SeleStatus == "ปรับปรุง" {
 		StatusID = 3
+	}
+
+	database.Db.Where("Name = ?", input.Name).First(&input)
+	if input.ID > 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"Message": "Room Exist"})
+		return
 	}
 
 	room := model.Room{
@@ -65,4 +74,33 @@ func GetRooms(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, Room)
+}
+
+func UpdateRoom(c *gin.Context) {
+	var room model.Room
+	id, _ := strconv.Atoi(c.Param("id"))
+	err := model.GetRoom(&room, id)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.AbortWithStatus(http.StatusNotFound)
+			return
+		}
+
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+	c.BindJSON(&room)
+	if room.SeleStatus == "ว่าง" {
+		room.StatusID = 1
+	} else if room.SeleStatus == "ไม่ว่าง" {
+		room.StatusID = 2
+	} else if room.SeleStatus == "ปรับปรุง" {
+		room.StatusID = 3
+	}
+	err = model.UpdateRoom(&room)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+	c.JSON(http.StatusOK, room)
 }

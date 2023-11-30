@@ -9,15 +9,15 @@ type Room struct {
 	gorm.Model
 	ID                 uint       `gorm:"primary_key"`
 	UserID             uint       `gorm:"not null" json:"user_id"`
-	Name               string     `gorm:"not null;unique" json:"name"`
+	Name               string     `gorm:"not null" json:"name"`
 	Description        string     `json:"description"`
 	SeleStatus         string     `json:"selestatus"`
 	Rent               int        `json:"rent"`
-	Bed_combo_mattress bool       `json:"bed_combo_mattress"` //เตียงพร้อมฟูก
-	Table              bool       `json:"table"`              // โต๊ะ
-	Wardrobe           bool       `json:"wardrobe"`           //ตู้เสื้อผ้า
-	TVShelf            bool       `json:"tv_shelf"`           // ชั้นวางทีวี
-	ShoeRack           bool       `json:"shoe_rack"`          //ชั้นวางรองเท้า
+	Bed_combo_mattress *bool      `json:"bed_combo_mattress"` //เตียงพร้อมฟูก
+	Table              *bool      `json:"table"`              // โต๊ะ
+	Wardrobe           *bool      `json:"wardrobe"`           //ตู้เสื้อผ้า
+	TVShelf            *bool      `json:"tv_shelf"`           // ชั้นวางทีวี
+	ShoeRack           *bool      `json:"shoe_rack"`          //ชั้นวางรองเท้า
 	StatusID           uint       `gorm:"not null;DEFAULT:2;" json:"statusID"`
 	User               User       `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
 	StatusRoom         StatusRoom `gorm:"foreignKey:StatusID;references:ID"`
@@ -64,7 +64,16 @@ func GetRoomById(id uint) (Room, error) {
 // Update user
 func UpdateRoom(Room *Room) (err error) {
 	// err = database.Db.Omit("password").Updates(User).Error
-	err = database.Db.Updates(Room).Error //.Omit ที่นี้คือยกเว้น อัพเดททุกตัว ยกเว้น password
+	err = database.Db.Updates(Room).Preload("StatusRoom").First(&Room).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// Get user by id
+func GetRoom(Room *Room, id int) (err error) {
+	err = database.Db.Where("id = ?", id).First(Room).Error
 	if err != nil {
 		return err
 	}

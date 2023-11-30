@@ -96,6 +96,7 @@ func serveApplication() {
 		//สร้างห้อง
 		adminRoutes.POST("/add/room", controller.CreateRoom)
 		adminRoutes.GET("/view/All/room", controller.GetRooms)
+		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
 
 		//ลงทะเบียนผู้เช่า
 		adminRoutes.POST("/user/checkin", controller.CreateCheckin)

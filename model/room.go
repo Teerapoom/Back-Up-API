@@ -42,23 +42,9 @@ func GetRooms(Room *[]Room) (err error) {
 }
 
 // Get Room by name name คือ เลขห้อง
-func GetRoomByName(name string) (Room, error) {
-	var room Room
-	err := database.Db.Where("Name = ? ", name).Find(&room).Error
-	if err != nil {
-		return Room{}, err
-	}
-	return room, nil
-}
-
-// Get user by id
-func GetRoomById(id uint) (Room, error) {
-	var room Room
-	err := database.Db.Where("id=?", id).Find(&room).Error
-	if err != nil {
-		return Room{}, err
-	}
-	return room, nil
+func GetRoomByName(name string, room *Room) error {
+	err := database.Db.Where("name = ?", name).Preload("StatusRoom").First(room).Error
+	return err
 }
 
 // Update user
@@ -73,7 +59,7 @@ func UpdateRoom(Room *Room) (err error) {
 
 // Get user by id
 func GetRoom(Room *Room, id int) (err error) {
-	err = database.Db.Where("id = ?", id).First(Room).Error
+	err = database.Db.Where("id = ?", id).Preload("StatusRoom").First(Room).Error
 	if err != nil {
 		return err
 	}

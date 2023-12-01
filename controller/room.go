@@ -76,6 +76,21 @@ func GetRooms(c *gin.Context) {
 	c.JSON(http.StatusOK, Room)
 }
 
+// Get Room BY ID
+func GetRoom(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	var room model.Room
+	err := model.GetRoom(&room, id)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.AbortWithStatus(http.StatusNotFound)
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+	}
+	c.JSON(http.StatusOK, room)
+}
+
 func UpdateRoom(c *gin.Context) {
 	var room model.Room
 	id, _ := strconv.Atoi(c.Param("id"))
@@ -101,6 +116,20 @@ func UpdateRoom(c *gin.Context) {
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
+	}
+	c.JSON(http.StatusOK, room)
+}
+
+func GetRoomName(c *gin.Context) {
+	name := c.Param("name")
+	var room model.Room
+	err := model.GetRoomByName(name, &room)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"Status Code": "400", "message": "Room not found"})
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 	}
 	c.JSON(http.StatusOK, room)
 }

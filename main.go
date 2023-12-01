@@ -97,6 +97,8 @@ func serveApplication() {
 		adminRoutes.PUT("/user/role/:id", controller.UpdateRole)
 		//Room
 		adminRoutes.POST("/add/room", controller.CreateRoom)
+		adminRoutes.GET("/view/room/:id", controller.GetRoom)       //  GET ตาม ID
+		adminRoutes.GET("/view/roow/:name", controller.GetRoomName) // GET ตาม Name
 		adminRoutes.GET("/view/All/room", controller.GetRooms)
 		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
 		//Checkin

@@ -17,7 +17,7 @@ func CreateCheckin(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
+	// user_id มาจากตาราง users
 	if err := database.Db.Where("user_id = ?", input.UserNameCheckin).First(&User).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Message": "User not found"})
 		return

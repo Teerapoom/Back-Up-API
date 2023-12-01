@@ -84,21 +84,22 @@ func serveApplication() {
 	adminRoutes := router.Group("/admin")
 	{
 		adminRoutes.Use(util.JWTAuth()) // part นี้ต้องเป็น Admin เท่านั้น !!! ส่ง token เพื่อยืนยัน
+		// User
 		adminRoutes.POST("/register", controller.Register)
 		adminRoutes.GET("/users", controller.GetUsers)
 		adminRoutes.GET("/user/:id", controller.GetUser)
 		adminRoutes.PUT("/user/:id", controller.UpdateUser)
 		adminRoutes.DELETE("/user/remove/:id", controller.RemoveUser)
+		// Role
 		adminRoutes.POST("/user/role", controller.CreateRole)
 		adminRoutes.GET("/user/role", controller.GetRoles)
 		adminRoutes.GET("/user/role/:id", controller.GetRole)
 		adminRoutes.PUT("/user/role/:id", controller.UpdateRole)
-		//สร้างห้อง
+		//Room
 		adminRoutes.POST("/add/room", controller.CreateRoom)
 		adminRoutes.GET("/view/All/room", controller.GetRooms)
 		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
-
-		//ลงทะเบียนผู้เช่า
+		//Checkin
 		adminRoutes.POST("/user/checkin", controller.CreateCheckin)
 		adminRoutes.GET("/user/checkin/view", controller.GetCheckinS)
 	}

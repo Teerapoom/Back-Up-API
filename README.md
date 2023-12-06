@@ -36,3 +36,11 @@
 ```http
   GET /admin/users
 ```
+
+#### View User BY ID
+```http
+  GET /admin/users/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `ID` | `string` | **Required**. ID of user |

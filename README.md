@@ -19,3 +19,5 @@
 | :-------- | :------- | :------------------------- |
 | `UserName` | `string` | **Required**. UserName such as "T0001" |
 | `Password` | `string` | **Required**. Password |
+
+### Admin 🙋‍♂️

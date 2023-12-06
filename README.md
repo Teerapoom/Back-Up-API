@@ -87,7 +87,7 @@
 ### Checkin
 
 <details>
-<summary> </summary>
+<summary> JSON Checkin </summary>
 
 ```json
        {

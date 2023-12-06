@@ -1,5 +1,11 @@
 # ProJect-Api-Dormitory
 
+## 🛠 Skills
+[![My Skills](https://skillicons.dev/icons?i=go,mysql,postman)](https://skillicons.dev)
+- Go lang
+- MySql
+- Postman
+
 ##  DB Diagram  
   ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/Api_Dromitory002%20(1).png)
 

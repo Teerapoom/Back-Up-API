@@ -8,16 +8,31 @@
 
 ## API Reference
 
-### User 🙋‍♂️
+### Role User 🙋‍♂️
 
 #### Login 
 
 ```http
-  GET /auth/user/login
+  POST /auth/user/login
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `UserName` | `string` | **Required**. UserName such as "T0001" |
 | `Password` | `string` | **Required**. Password |
 
-### Admin 🙋‍♂️
+### Role Admin 👩‍💻
+
+#### register
+```http
+  POST /admin/register
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `UserName` | `string` | **Required**. UserName such as "T0001" |
+| `Password` | `string` | **Required**. Password |
+
+
+#### View All User
+```http
+  GET /admin/users
+```

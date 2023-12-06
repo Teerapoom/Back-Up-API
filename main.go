@@ -88,18 +88,18 @@ func serveApplication() {
 		adminRoutes.POST("/register", controller.Register)
 		adminRoutes.GET("/users", controller.GetUsers)
 		adminRoutes.GET("/user/:id", controller.GetUser)
-		adminRoutes.PUT("/user/:id", controller.UpdateUser)
+		adminRoutes.PUT("/update/user/:id", controller.UpdateUser)
 		adminRoutes.DELETE("/user/remove/:id", controller.RemoveUser)
 		// Role
 		adminRoutes.POST("/user/role", controller.CreateRole)
 		adminRoutes.GET("/user/role", controller.GetRoles)
 		adminRoutes.GET("/user/role/:id", controller.GetRole)
-		adminRoutes.PUT("/user/role/:id", controller.UpdateRole)
+		adminRoutes.PUT("/update/user/role/:id", controller.UpdateRole)
 		//Room
 		adminRoutes.POST("/add/room", controller.CreateRoom)
 		adminRoutes.GET("/view/room/:id", controller.GetRoom)       //  GET ตาม ID
 		adminRoutes.GET("/view/roow/:name", controller.GetRoomName) // GET ตาม Name
-		adminRoutes.GET("/view/All/room", controller.GetRooms)
+		adminRoutes.GET("/view/all/room", controller.GetRooms)
 		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
 		//Checkin
 		adminRoutes.POST("/user/checkin", controller.CreateCheckin)

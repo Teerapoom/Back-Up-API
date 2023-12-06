@@ -22,25 +22,4 @@
 
 ### Role Admin 👩‍💻
 
-#### register
-```http
-  POST /admin/register
-```
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `UserName` | `string` | **Required**. UserName such as "T0001" |
-| `Password` | `string` | **Required**. Password |
-
-
-#### View All User
-```http
-  GET /admin/users
-```
-
-#### View User BY ID
-```http
-  GET /admin/users/:id
-```
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `ID` | `string` | **Required**. ID of user |
+[Documentation API](https://linktodocumentation)

@@ -2,3 +2,6 @@
 
 ##  DB Diagram  
   ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/Api_Dromitory002%20(1).png)
+
+## User level  
+  ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/User.drawio.png)

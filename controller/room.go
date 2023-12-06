@@ -112,11 +112,22 @@ func UpdateRoom(c *gin.Context) {
 	} else if room.SeleStatus == "ปรับปรุง" {
 		room.StatusID = 3
 	}
+
+	// Update the StatusRoom field
+	var statusRoom model.StatusRoom
+	err = database.Db.First(&statusRoom, room.StatusID).Error
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+	room.StatusRoom = statusRoom
+
 	err = model.UpdateRoom(&room)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
 	}
+
 	c.JSON(http.StatusOK, room)
 }
 

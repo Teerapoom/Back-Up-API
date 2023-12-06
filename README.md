@@ -25,7 +25,7 @@
 [Documentation Role Admin](https://docs.google.com/document/d/1iVSmTnf7N_W1tlCR89I_UlMG7tMIZSfzgtpL8nS0Ml0/edit?usp=sharing)
 
 
-## Test JSON 
+## JSON Response
 
 ### Login
 

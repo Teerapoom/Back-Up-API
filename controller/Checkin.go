@@ -12,6 +12,7 @@ import (
 func CreateCheckin(c *gin.Context) {
 	var input model.Checkin
 	var User model.User
+	var room model.Room
 	var user_id = util.CurrentUser(c).ID
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -24,6 +25,12 @@ func CreateCheckin(c *gin.Context) {
 	}
 	// fmt.Println(User.ID)
 	input.UserNameCheckinID = User.ID
+
+	if err := database.Db.Where("name =?", input.RoomName).First(&room).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Massage": "Room not found"})
+		return
+	}
+	input.RoomID = room.ID
 	// Room
 	ChangeStatus(c, input.RoomID)
 	// Room
@@ -37,6 +44,7 @@ func CreateCheckin(c *gin.Context) {
 		UserNameCheckin:   input.UserNameCheckin, //ชื่อห้อง
 		UserNameCheckinID: input.UserNameCheckinID,
 		RoomID:            input.RoomID,
+		RoomName:          input.RoomName,
 		Deposit:           input.Deposit,
 		RentRate:          input.RentRate,
 		ContractDate:      input.ContractDate,

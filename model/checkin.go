@@ -12,6 +12,7 @@ type Checkin struct {
 	ID                uint      `gorm:"primary_key"`
 	UserID            uint      `gorm:"not null" json:"user_id"`
 	RoomID            uint      `gorm:"not null" json:"room_id"`
+	RoomName          string    `json:"room_name"`
 	UserNameCheckin   string    `json:"user_name_checkin"`
 	UserNameCheckinID uint      `json:"user_name_checkinid"`
 	Deposit           int       `json:"deposit"`
@@ -27,17 +28,17 @@ type Checkin struct {
 	Addr1             string    `json:"addr1"`
 	Place1            string    `json:"place1"`
 	//เพิ่ม
-	Renter2      string    `json:"renter2"`
-	Birth_Date2  time.Time `json:"birth_date2"`
-	IssuedBy2    string    `json:"issued_by2"`
-	Card_number2 string    `json:"card_number2"`
-	IssuedDate2  time.Time `json:"issued_date2"`
-	CardCopyIMG2 string    `json:"card_copyimg2"`
-	Phone2       string    `json:"phone2"`
-	Addr2        string    `json:"addr2"`
-	Place2       string    `json:"place2"`
-	User         User      `gorm:"foreignKey:UserNameCheckinID;references:ID"`
-	Room         Room      `gorm:"foreignKey:RoomID;references:ID"`
+	Renter2      *string    `json:"renter2"`
+	Birth_Date2  *time.Time `json:"birth_date2"`
+	IssuedBy2    *string    `json:"issued_by2"`
+	Card_number2 *string    `json:"card_number2"`
+	IssuedDate2  *time.Time `json:"issued_date2"`
+	CardCopyIMG2 *string    `json:"card_copyimg2"`
+	Phone2       *string    `json:"phone2"`
+	Addr2        *string    `json:"addr2"`
+	Place2       *string    `json:"place2"`
+	User         User       `gorm:"foreignKey:UserNameCheckinID;references:ID"`
+	Room         Room       `gorm:"foreignKey:RoomID;references:ID"`
 }
 
 // `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`

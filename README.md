@@ -34,3 +34,22 @@
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYXQiOjE3MDE4NTg3NTIsImlhdCI6MTcwMTg0MDc1MiwiaWQiOjMsInJvbGUiOjJ9.BkOlJbJZUcJJDTG_iS9LWbMp7Z7khcvEYQ-WVt1afnc",
     "username": "T0001"
 ```
+### Register
+
+```json
+{
+    "user": {
+        "CreatedAt": "2023-12-06T12:35:40.409+07:00",
+        "UpdatedAt": "2023-12-06T12:35:40.409+07:00",
+        "DeletedAt": null,
+        "ID": 11,
+        "role_id": 2,
+        "userID": "T0003",
+        "seleuser": "ผู้เช่า",
+        "username": "พงศภัค โชคชัย",
+        "email": "user3@example.com",
+        "password": "$2a$10$MuxIKTY.ZN5QMXDG1vg5/.xC/wQ7rC6n4WHxo9XeiKJu88QdgbSZO",
+        "numberphone": "07520136432"
+    }
+}
+```

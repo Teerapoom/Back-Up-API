@@ -85,6 +85,10 @@
 ```
 
 ### Checkin
+
+<details>
+<summary> </summary>
+<br>
 ```json
        {
         "CreatedAt": "2023-12-06T09:44:13.265+07:00",
@@ -156,3 +160,5 @@
         }
     }
 ```
+</details>
+

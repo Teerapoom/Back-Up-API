@@ -103,7 +103,7 @@ func serveApplication() {
 		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
 		//Checkin
 		adminRoutes.POST("/user/checkin", controller.CreateCheckin)
-		adminRoutes.GET("/user/checkin/view", controller.GetCheckinS)
+		adminRoutes.GET("/user/all/checkin", controller.GetCheckinS)
 	}
 
 	router.Run(":8080")

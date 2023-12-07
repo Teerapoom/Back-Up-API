@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/teerapoom/API_Dormitory_v.2/controller"
@@ -73,6 +74,7 @@ func seedData() {
 
 func serveApplication() {
 	router := gin.Default()
+	router.Use(cors.Default())
 
 	//ทุกคนสามารถใช้งานได้
 	authRoutes := router.Group("/auth/user")
@@ -97,10 +99,10 @@ func serveApplication() {
 		adminRoutes.PUT("/update/user/role/:id", controller.UpdateRole)
 		//Room
 		adminRoutes.POST("/add/room", controller.CreateRoom)
-		adminRoutes.GET("/view/room/:id", controller.GetRoom)       //  GET ตาม ID
-		adminRoutes.GET("/view/room/:name", controller.GetRoomName) // GET ตาม Name
+		adminRoutes.GET("/view/room/:id", controller.GetRoom) //  GET ตาม ID
 		adminRoutes.GET("/view/all/room", controller.GetRooms)
 		adminRoutes.PUT("/update/room/:id", controller.UpdateRoom)
+		// adminRoutes.GET("/view/room/:roomName", controller.GetRoomName) // GET ตาม Name
 		//Checkin
 		adminRoutes.POST("/user/checkin", controller.CreateCheckin)
 		adminRoutes.GET("/user/all/checkin", controller.GetCheckinS)

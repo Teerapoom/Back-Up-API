@@ -7,7 +7,7 @@
 - Postman
 
 ##  DB Diagram  
-  ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/Api_Dromitory002%20(1).png)
+  ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/Api_Dromitory002.png)
 
 ## User level  
   ![Logo](https://github.com/Teerapoom/ProJect-Api-Dormitory/blob/main/IMG/User_level.jpg)

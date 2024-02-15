@@ -1,4 +1,4 @@
-# ProJect-Api-Dormitory
+# ProJect-Api-Hotel API
 
 ## 🛠 Skills
 [![My Skills](https://skillicons.dev/icons?i=go,mysql,postman)](https://skillicons.dev)
